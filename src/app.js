@@ -1,36 +1,33 @@
 console.log("Merhaba Kodlama.io")
 
 //JS type safe değildir
-let dolarBugun = 9.30
+//JS kodları yukarıdan aşağıya doğru okur
 
-let dolarDun = 9.20
-dolarDun = "9.20"
+let dolarDun = 7.5
+let dolarBugun = 7.4
+
 {
-    let dolarDun = 9.10
+    let dolardun = 7.3
 }
 
 console.log(dolarDun)
 
 const euroDun = 11.2
-//euroDun = 11
+
+//euroDun = 11 olarak bir daha tanımlayamayız. çünkü ilk basta biz bunu sabit olarak tanımladık
 
 console.log(euroDun)
-
 //array
 //camelCasing
 //PascalCasing
-let konutKredileri = ["Konut kredisi","Emlak Konut Kredisi","Kamu Konut Kredisi","Özel Konut Kredisi"]
+let konutKredileri = ["konut Kredisi",12,"Kmlak Konut Kredisi",["a","aa"], "Kamu Konut Kredisi"]//tum veri tiplerini array içinde tanımlayabiliyoruz.
+
+// console.log(konutKredileri)
+
+//let users = getUsersFromApi()  bunun gibi bir komutla backanddan bilgileri çekeceğiz ileride.
 
 console.log("<ul>")
-for(let i = 0;i<konutKredileri.length;i++){
-    console.log("<li>"+konutKredileri[i]+"</li>")
+for(let i = 0; i < konutKredileri.length; i++){
+    console.log("<li>" + konutKredileri[i] + "<li>")
 }
-console.log("</ul>")
-
-{/* <ul>
-    <li>Konut kredisi</li>
-    <li>Emlak Konut Kredisi</li>
-    <li>Kamu Konut Kredisi</li>
-</ul> */}
-
-console.log(konutKredileri)
+console.log("<ul>")
