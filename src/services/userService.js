@@ -102,7 +102,8 @@ export default class UserService{
             return -1
         }else if(customer1.firstName === customer2.firstName){
             return 0
-        }else{
+        }
+        else{
             return 1
         }
     })
