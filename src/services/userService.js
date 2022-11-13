@@ -83,7 +83,7 @@ export default class UserService{
                 break;
         }
         this.loggerService.log(user)
-        this.loggerService.doSomething()
+        
     }
 
     
