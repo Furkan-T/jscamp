@@ -1,24 +1,25 @@
 import { users } from "../data/users.js"
 import DataError from "../models/dataError.js"
 
-export default class UserService {
-    constructor(loggerService) {
+export default class UserService{
+
+    constructor(loggerService){
         this.employees = []
         this.customers = []
         this.errors = []
         this.loggerService = loggerService
     }
 
-    load() {
+    load(){
         for (const user of users) {
             switch (user.type) {
                 case "customer":
-                    if (!this.checkCustomerValidityForErrors(user)) {
+                    if (!this.checkCustomerValidityForErrors(user)){
                         this.customers.push(user)
                     }
                     break;
                 case "employee":
-                    if (!this.checkEmployeeValidityForErrors(user)) {
+                    if(!this.checkEmployeeValidityForErrors(user)){
                         this.employees.push(user)
                     }
                     break;
@@ -29,82 +30,81 @@ export default class UserService {
         }
     }
 
-    //formik-yup
-    checkCustomerValidityForErrors(user) {
+    checkCustomerValidityForErrors(user){
         let requiredFields = "id firstName lastName age city".split(" ")
         let hasErrors = false
         for (const field of requiredFields) {
-            if (!user[field]) {
+            if (!user[field]){
                 hasErrors = true
-                this.errors.push(
-                    new DataError(`Validation problem. ${field} is required`, user))
+                this.errors.push(new DataError(`Validation problem ${field} is required` , user))
             }
+            
         }
+        
 
-        if (Number.isNaN(Number.parseInt(+user.age))) {
+        if (Number.isNaN(Number.parseInt(user.age))){
             hasErrors = true
-            this.errors.push(new DataError(`Validation problem. ${user.age} is not a number`, user))
+            this.errors.push(new DataError(`Validation problem ${user.age} is not a number` , user))
         }
-
         return hasErrors
     }
 
-    checkEmployeeValidityForErrors(user) {
+    checkEmployeeValidityForErrors(user){
         let requiredFields = "id firstName lastName age city salary".split(" ")
         let hasErrors = false
         for (const field of requiredFields) {
-            if (!user[field]) {
+            if (!user[field]){
                 hasErrors = true
-                this.errors.push(
-                    new DataError(`Validation problem. ${field} is required`, user))
+                this.errors.push(new DataError(`Validation problem ${field} is required` , user))
             }
+            
         }
-
-        if (Number.isNaN(Number.parseInt(user.age))) {
+        if (Number.isNaN(Number.parseInt(user.age))){
             hasErrors = true
-            this.errors.push(new DataError(`Validation problem. ${user.age} is not a number`, user))
+            this.errors.push(new DataError(`Validation problem ${user.age} is not a number` , user))
         }
-        return hasErrors
+        return hasErrors 
     }
 
-    add(user) {
+    add(user){
         switch (user.type) {
             case "customer":
-                if (!this.checkCustomerValidityForErrors(user)) {
+                if (!this.checkCustomerValidityForErrors(user)){
                     this.customers.push(user)
                 }
                 break;
             case "employee":
-                if (!this.checkEmployeeValidityForErrors(user)) {
+                if(!this.checkEmployeeValidityForErrors(user)){
                     this.employees.push(user)
                 }
                 break;
             default:
-                this.errors.push(
-                    new DataError("This user can not be added. Wrong user type", user))
+                this.errors.push(new DataError(`This user cannot be added. ${user.type} is wrong user type`, user))
                 break;
         }
         this.loggerService.log(user)
+        this.loggerService.doSomething()
     }
 
-    listCustomers() {
+    
+    listCustomers(){
         return this.customers
     }
 
-    getCustomerById(id) {
-        return this.customers.find(u=>u.id ===id)
-    }
+    
+    getcustomersById(id){
+        return this.customers.find(u=>u.id === id)
+}
 
     getCustomersSorted(){
-        return this.customers.sort((customer1,customer2)=>{
-            if(customer1.firstName>customer2.firstName){
-                return 1;
-            }else if(customer1.firstName===customer2.firstName){
-                return 0;
-            }else{
-                return -1
-            }
-        })
-    }
-
+    return this.customers.sort((customer1,customer2)=>{
+        if(customer1.firstName < customer2.firstName){
+            return -1
+        }else if(customer1.firstName === customer2.firstName){
+            return 0
+        }else{
+            return 1
+        }
+    })
+}
 }

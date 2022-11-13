@@ -1,60 +1,56 @@
-
-//id, firstName, lastName, city,age, creditCardNumber
 export const users = [
     {
-        id: 1,
-        firstName: "Engin",
-        lastName: "Demiroğ",
+        id:1,
+        firstName:"Engin",
+        lastName:"Demirog",
         city:"Ankara",
-        age: 36,
-        creditCardNumber: "123456",
+        age:36,
+        creditCardNumber:"123456",
         type: "customer"
     },
     {
-        id: 6,
-        firstName: "Beytullah",
-        lastName: "Zor",
+        id:2,
+        firstName:"Mustafa",
+        lastName:"Demir",
         city:"Ankara",
-        age: 36,
-        creditCardNumber: "123456",
+        age:21,
+        creditCardNumber:"345678",
         type: "customer"
     },
     {
-        id: 2,
-        firstName: "Mustafa",
-        lastName: "Sansar",
-        city: "İstanbul",
-        age: 21,
-        creditCardNumber: "654321",
+        id:6,
+        firstName:"Ahmet",
+        lastName:"Demir",
+        city:"Ankara",
+        age:21,
+        creditCardNumber:"345678",
         type: "customer"
     },
     {
-        id: 3,
-        firstName: "Cansu",
-        lastName: "Değirmen",
-        city: "İstanbul",
-        salary: 8000,
-        age:20,
+        id:3,
+        firstName:"Furkan",
+        lastName:"Tekiroglu",
+        age:21,
+        city:"Istanbul",
+        salary:80000,
         type: "employee"
     },
     {
-        id: 4,
-        firstName: "Mücahit",
-        lastName: "Kaya",
-        city: "Bolu",
-        age: 23,
+        id:4,
+        firstName:"Osman",
+        lastName:"Çicek",
+        city:"Samsun",
+        age:25,
         salary:17000,
-        type: "employee"
+        type:"employee"
     },
     {
-        id: 5,
-        firstName: "Eren",
-        lastName: "Arı",
-        city: "Diyarbakır",
-        age: 20,
-        salary: 15000,
-        type: "employee"
+        id:5,
+        firstName:"Bilal",
+        lastName:"Çicek",
+        city:"Samsun",
+        age:22,
+        salary:8500,
+        type:"employee"
     }
 ]
-
-//23.05 Dersteyiz
